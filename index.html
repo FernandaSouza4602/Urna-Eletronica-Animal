@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+        <title>Tela inicial</title>
+        <style>
+            img{
+                width: 30%;
+                display: block;
+                margin: 0 auto;
+            }
+            .container{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                text-align: center;
+            }
+            .caption{
+                margin-top: 1rem;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: bold;
+                font-size: 3vw;
+                color: #333;
+            }
+
+            @media (max-width: 600px) {
+                .caption {
+                    font-size: 4vw;
+                }
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <img src="./images/logoUrna.png" alt="logo justica animal">
+            <p class="caption">Justiça Eleitoral Animal</p>
+        </div>   
+
+        <script>
+            //event listener
+            document.addEventListener('keydown', function(event) {
+                //check key press
+                if (event.key === 'Enter') {
+                    //redirecting to next page
+                    window.location.href = 'voting.html';
+                }
+            })
+        </script>
+    </body>
+</html>

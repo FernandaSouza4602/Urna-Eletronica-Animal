@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Voting</title>
+        <style>
+            /* General styles */
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                background-color: #f4f4f4;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;  
+            }
+            /* Container for digit input */ 
+            .container {
+                position: absolute;
+                top: 18vh;
+                left: 15vw;
+            }
+            .presidente-label {
+                font-size: 4vw;
+                font-weight: bold;
+                color: #333;
+                margin-bottom: 4vh;
+            }
+            .input-container {
+                display: flex;
+                gap: 2vw;
+            }
+            .input-box {
+                width: 6vw;
+                height: 13vh;
+                border: 2px solid #333;
+                text-align: center;
+                font-size: 6.5vw;
+                font-weight: bold;
+                color: #333;
+            }
+            
+            /* Candidate image styling */
+            .candidate-image-container {
+                position: absolute;
+                top: 19vh;
+                left: 65vw;
+            }
+            .candidate-image {
+                width: 350px;
+                height: 350px;
+                border-radius: 10px;
+                border-bottom: 20px;
+                display: none;
+            }
+
+            /* Candidate name styling */
+            .candidate-name-container {
+                position: absolute;
+                top: 52vh;
+                left: 15vw;
+                text-align: left;
+            }
+            .candidate-name {
+                font-size: 3vw;
+                font-weight: bold;
+                color: #333;
+                display: none;
+            }
+
+            /* Responsive adjustments */
+            @media (max-width: 600px) {
+                .presidente-label {
+                    font-size: 4vw;
+                }
+                .input-box {
+                    width: 40px;
+                    height: 60px;
+                    font-size: 4vw;
+                }
+                .candidate-image {
+                    width: 150px;
+                    height: 150px;
+                }
+                .candidate-name {
+                    font-size: 5vw;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="presidente-label">PRESIDENTE</div>
+            <div class="input-container">
+                <div class="input-box" id="digit1"></div>
+                <div class="input-box" id="digit2"></div>
+            </div>
+        </div>
+
+        <div class="candidate-image-container">
+            <img src="" alt="Candidato" class="candidate-image" id="candidateImage">
+        </div>
+
+        <div class="candidate-name-container">
+            <div class="candidate-name" id="candidateName"></div>
+        </div>
+
+        <script src="voting.js"></script>
+    </body>
+</html>
