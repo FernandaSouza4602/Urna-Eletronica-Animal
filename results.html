@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Results</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <canvas id="voteChart" width="400" height="400"></canvas>
+
+        <script>
+            // Get the votes from localStorage
+            const votes = JSON.parse(localStorage.getItem('votes')) || {};
+
+            const candidates = {
+                "11": {name: "Macaquias Macaco"},
+                "22": {name: "Genésio Lobo-Guará"},
+                "33": {name: "Tamandaré Tamanduá"},
+                "44": {name: "Vaca Vivoca"},
+                "55": {name: "Pedro Preguiça"},
+                "66": {name: "Iracema Siriema"},
+                "77": {name: "Tião Leão"}
+            };
+
+            // Get the candidate names and vote counts
+            const candidateNames = Object.keys(votes).map(num => candidates[num].name);
+            const voteCounts = Object.values(votes);
+
+            // Create the chart
+            const ctx = document.getElementById('voteChart').getContext('2d');
+            const voteChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: candidateNames,
+                    datasets: [{
+                        label: '# de Votos',
+                        data: voteCounts,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales:{
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                window.location.href = 'index.html'; 
+                }
+            });
+        </script>
+    </body>
+</html>

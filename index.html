@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-        <title>Tela inicial</title>
+        <title>Tela Inicial</title>
         <style>
             img{
                 width: 30%;
@@ -43,14 +43,21 @@
         </div>   
 
         <script>
-            //event listener
+            // Check if the user pressed 'Enter' and send them to the voting page
             document.addEventListener('keydown', function(event) {
                 //check key press
                 if (event.key === 'Enter') {
                     //redirecting to next page
                     window.location.href = 'voting.html';
                 }
-            })
+            });
+
+            // Checked if the user pressed 'Alt' and send them to the results page
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'r') {
+                    window.location.href = 'results.html';
+                }
+            });
         </script>
     </body>
 </html>

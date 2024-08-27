@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+        <title>Tela Final</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                height: 130vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #f4f4f4;
+            }
+
+            .caption {
+                font-weight: bold;
+                font-size: 20vw;
+                color: #333;
+                text-align: center;
+            }
+
+            @media (max-width: 600px) {
+                .caption {
+                    font-size: 4vw;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="caption">FIM</p>
+        </div>   
+
+        <script>
+            window.onload = function() {
+                const votingConfirmation = new Audio('./sound effects/voting-confirmation.mp3');
+                votingConfirmation.play();
+            }
+            //event listener
+            document.addEventListener('keydown', function(event) {
+                //check key press
+                if (event.key === 'Escape') {
+                    //redirecting to next page
+                    window.location.href = 'index.html';
+                }
+            })
+        </script>
+    </body>
+</html>

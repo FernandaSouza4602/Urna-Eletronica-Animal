@@ -7,6 +7,8 @@ document.addEventListener('keydown', function(event) {
 
     // Identify if the user typed a number
     if (key >= '0' && key <= '9') {
+        numberInput.play();
+
         if (digit1.textContent === '') {
             digit1.textContent = key;
         } else if (digit2.textContent === '') {
@@ -25,7 +27,6 @@ document.addEventListener('keydown', function(event) {
                 candidateImage.style.display = 'none';
                 candidateName.style.display = 'none';
             }
-
         }
     }
        
@@ -39,6 +40,24 @@ document.addEventListener('keydown', function(event) {
 
         candidateImage.style.display = 'none';
         candidateName.style.display = 'none';
+    }
+
+    else if (key === 'Enter' && digit1.textContent !== '' && digit2.textContent !== '') {
+        const candidateNumber = digit1.textContent + digit2.textContent;
+        if (candidates[candidateNumber]) {
+
+            // Get the current vote count from localStorage
+            let votes = JSON.parse(localStorage.getItem('votes')) || {};
+
+            // Increment the vote count for the selected candidate
+            votes[candidateNumber] = (votes[candidateNumber] || 0) + 1;
+
+            // Save the updated votes back to localStorage
+            localStorage.setItem('votes', JSON.stringify(votes));
+
+            // Redirects the user to the end page
+            window.location.href = 'end.html';
+        }
     }
 });
 
