@@ -1,0 +1,20 @@
+.candidate-images {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.candidate-images img {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.chart-container {
+    margin-left: 30px;
+    width: calc(100% - 230px);
+    height: auto;
+}

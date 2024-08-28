@@ -1,60 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vote Results</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </head>
-    <body>
-        <canvas id="voteChart" width="400" height="400"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <link rel="stylesheet" href="results.css">
+    <style>
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
 
-        <script>
-            // Get the votes from localStorage
-            const votes = JSON.parse(localStorage.getItem('votes')) || {};
+        .title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 70px;
+            font-weight: bold;
+            margin-bottom: 60px;
+        }
 
-            const candidates = {
-                "11": {name: "Macaquias Macaco"},
-                "22": {name: "Genésio Lobo-Guará"},
-                "33": {name: "Tamandaré Tamanduá"},
-                "44": {name: "Vaca Vivoca"},
-                "55": {name: "Pedro Preguiça"},
-                "66": {name: "Iracema Siriema"},
-                "77": {name: "Tião Leão"}
-            };
+        .content {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+        }
 
-            // Get the candidate names and vote counts
-            const candidateNames = Object.keys(votes).map(num => candidates[num].name);
-            const voteCounts = Object.values(votes);
+        .candidate-images {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-right: 10px;
+        }
 
-            // Create the chart
-            const ctx = document.getElementById('voteChart').getContext('2d');
-            const voteChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: candidateNames,
-                    datasets: [{
-                        label: '# de Votos',
-                        data: voteCounts,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales:{
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
+        .candidate-images img {
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+        }
 
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape') {
+        .chart-container {
+            width: calc(100% - 210px);
+            height: auto;
+        }
+
+        #voteChart {
+            width: 100%;
+            height: auto;
+        }
+
+        .vote-count {
+            position: absolute;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Resultados da Votação</div>
+        <div class="content">
+            <div class="candidate-images">
+                <img src="./images/Macaquias Macaco.jpg" alt="Macaquias Macaco" data-id="11">
+                <img src="./images/Genésio Lobo-Guará.jpg" alt="Genésio Lobo-Guará" data-id="22">
+                <img src="./images/Tamandaré Tamanduá.jpg" alt="Tamandaré Tamanduá" data-id="33">
+                <img src="./images/Vaca Vivoca.jpg" alt="Vaca Vivoca" data-id="44">
+                <img src="./images/Pedro Preguiça.jpg" alt="Pedro Preguiça" data-id="55">
+                <img src="./images/Iracema Siriema.jpg" alt="Iracema Siriema" data-id="66">
+                <img src="./images/Tião Leão.jpg" alt="Tião Leão" data-id="77">
+            </div>
+            <div class="chart-container">
+                <canvas id="voteChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
                 window.location.href = 'index.html'; 
-                }
-            });
-        </script>
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <script src="results.js"></script>
     </body>
 </html>
