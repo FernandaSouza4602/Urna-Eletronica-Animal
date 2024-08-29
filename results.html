@@ -67,13 +67,13 @@
         <div class="title">Resultados da Votação</div>
         <div class="content">
             <div class="candidate-images">
-                <img src="./images/Macaquias Macaco.jpg" alt="Macaquias Macaco" data-id="11">
-                <img src="./images/Genésio Lobo-Guará.jpg" alt="Genésio Lobo-Guará" data-id="22">
-                <img src="./images/Tamandaré Tamanduá.jpg" alt="Tamandaré Tamanduá" data-id="33">
-                <img src="./images/Vaca Vivoca.jpg" alt="Vaca Vivoca" data-id="44">
-                <img src="./images/Pedro Preguiça.jpg" alt="Pedro Preguiça" data-id="55">
-                <img src="./images/Iracema Siriema.jpg" alt="Iracema Siriema" data-id="66">
-                <img src="./images/Tião Leão.jpg" alt="Tião Leão" data-id="77">
+                <img src="./images/Pedro Preguiça.jpg" alt="Pedro Preguiça" data-id="11">
+                <img src="./images/Iracema Siriema.jpg" alt="Iracema Siriema" data-id="12">
+                <img src="./images/Vaca Vivoca.jpg" alt="Vaca Vivoca" data-id="22">
+                <img src="./images/Macaquias Macaco.jpg" alt="Macaquias Macaco" data-id="34">
+                <img src="./images/Genésio Lobo-Guará.jpg" alt="Genésio Lobo-Guará" data-id="71">
+                <img src="./images/Tamandaré Tamanduá.jpg" alt="Tamandaré Tamanduá" data-id="99">
+                <img src="./images/Tião Leão.jpg" alt="Tião Leão" data-id="01">
             </div>
             <div class="chart-container">
                 <canvas id="voteChart"></canvas>
@@ -81,9 +81,54 @@
         </div>
     </div>
     <script>
+        let slashPressed = false;
+        let backspacePressed = false;
+        let dashPressed = false;
+
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                window.location.href = 'index.html'; 
+            console.log('Key pressed:', event.key);
+            if (event.key === '/') {
+                slashPressed = true;
+                console.log('Slash key pressed');
+            }
+            if (event.key === 'Backspace') {
+                backspacePressed = true;
+                console.log('Backspace key pressed');
+            }
+            if (event.key === '-') {
+                dashPressed = true;
+                console.log('Dash key pressed');
+            }
+
+            if (slashPressed && backspacePressed) {
+                console.log('Both keys pressed, redirecting...');
+                window.location.href = 'index.html';
+            }
+
+            if (slashPressed && dashPressed) {
+                console.log('Slash and Dash keys pressed, resetting votes...');
+                const candidateIds = ["34", "71", "99", "22", "11", "12", "01"];
+                const resetVotes = candidateIds.reduce((acc, id) => {
+                    acc[id] = 0;
+                    return acc;
+                }, {});
+
+                localStorage.setItem('votes', JSON.stringify(resetVotes));
+                console.log('Votes reset to:', resetVotes);
+                window.location.reload();
+            }
+        });
+
+        document.addEventListener('keyup', function(event) {
+            console.log('Key released:', event.key);
+            if (event.key === '/') {
+                slashPressed = false;
+            }
+            if (event.key === 'Backspace') {
+                backspacePressed = false;
+            }
+            if (event.key === '-') {
+                dashPressed = false;
             }
         });
     </script>

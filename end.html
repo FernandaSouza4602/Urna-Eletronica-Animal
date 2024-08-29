@@ -41,14 +41,10 @@
                 const votingConfirmation = new Audio('./sound effects/voting-confirmation.mp3');
                 votingConfirmation.play();
             }
-            //event listener
-            document.addEventListener('keydown', function(event) {
-                //check key press
-                if (event.key === 'Escape') {
-                    //redirecting to next page
-                    window.location.href = 'index.html';
-                }
-            })
+            // Automatically redirect the user to the home screen 
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 3000);
         </script>
     </body>
 </html>

@@ -53,8 +53,18 @@
             });
 
             // Checked if the user pressed 'Alt' and send them to the results page
+            let slashPressed = false;
+            let starPressed = false;
+
             document.addEventListener('keydown', function(event) {
-                if (event.key === 'r') {
+                if (event.key === '/') {
+                    slashPressed = true;
+                }
+                if (event.key === '*') {
+                    starPressed = true;
+                }
+
+                if (slashPressed && starPressed) {
                     window.location.href = 'results.html';
                 }
             });

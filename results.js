@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Votes from localStorage:', votes); // Debugging line
 
     const candidates = {
-        "11": { name: "Macaquias Macaco" },
-        "22": { name: "Genésio Lobo-Guará" },
-        "33": { name: "Tamandaré Tamanduá" },
-        "44": { name: "Vaca Vivoca" },
-        "55": { name: "Pedro Preguiça" },
-        "66": { name: "Iracema Siriema" },
-        "77": { name: "Tião Leão" }
+        "34": { name: "Macaquias Macaco" },
+        "71": { name: "Genésio Lobo-Guará" },
+        "99": { name: "Tamandaré Tamanduá" },
+        "22": { name: "Vaca Vivoca" },
+        "11": { name: "Pedro Preguiça" },
+        "12": { name: "Iracema Siriema" },
+        "01": { name: "Tião Leão" }
     };
 
     // Get the candidate names and vote counts, even if its zero
@@ -109,20 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             }
-        }
-    });
-
-    // Reset votes to start a new election
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'L') {
-            const resetVotes = candidateIds.reduce((acc, id) => {
-                acc[id] = 0;
-                return acc;
-            }, {});
-            // Save reset votes to localStorage
-            localStorage.setItem('votes', JSON.stringify(resetVotes));
-            // Reload the page to reflect the changes
-            window.location.reload();
         }
     });
 });

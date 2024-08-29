@@ -31,7 +31,7 @@ document.addEventListener('keydown', function(event) {
     }
        
     // Allow user to delete a number
-    else if (key === '-') {
+    else if (key === 'Backspace') {
         if (digit2.textContent !== ''){
             digit2.textContent = '';
         } else if (digit1.textContent !== '') {
@@ -62,18 +62,27 @@ document.addEventListener('keydown', function(event) {
 });
 
 const candidates = {
-    "11": {name: "Macaquias Macaco", image: "./images/Macaquias Macaco.jpg"},
-    "22": {name: "Genésio Lobo-Guará", image: "./images/Genésio Lobo-Guará.jpg"},
-    "33": {name: "Tamandaré Tamanduá", image: "./images/Tamandaré Tamanduá.jpg"},
-    "44": {name: "Vaca Vivoca", image: "./images/Vaca Vivoca.jpg"},
-    "55": {name: "Pedro Preguiça", image: "./images/Pedro Preguiça.jpg"},
-    "66": {name: "Iracema Siriema", image: "./images/Iracema Siriema.jpg"},
-    "77": {name: "Tião Leão", image: "./images/Tião Leão.jpg"}
+    "34": {name: "Macaquias Macaco", image: "./images/Macaquias Macaco.jpg"},
+    "71": {name: "Genésio Lobo-Guará", image: "./images/Genésio Lobo-Guará.jpg"},
+    "99": {name: "Tamandaré Tamanduá", image: "./images/Tamandaré Tamanduá.jpg"},
+    "22": {name: "Vaca Vivoca", image: "./images/Vaca Vivoca.jpg"},
+    "11": {name: "Pedro Preguiça", image: "./images/Pedro Preguiça.jpg"},
+    "12": {name: "Iracema Siriema", image: "./images/Iracema Siriema.jpg"},
+    "01": {name: "Tião Leão", image: "./images/Tião Leão.jpg"}
 };
 
-// Allow the user to return to the home screen
+let slashPressed = false;
+let backspacePressedPressed = false;
+
 document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        window.location.href = 'index.html'; 
+    if (event.key === '/') {
+        slashPressed = true;
+    }
+    if (event.key === 'Backspace') {
+        backspacePressed = true;
+    }
+
+    if (slashPressed && backspacePressed) {
+        window.location.href = 'index.html';
     }
 });
