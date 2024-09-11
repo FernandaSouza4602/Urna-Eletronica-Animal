@@ -3,25 +3,26 @@ document.addEventListener('keydown', function(event) {
     const digit2 = document.getElementById('digit2');
     const candidateImage = document.getElementById('candidateImage');
     const candidateName = document.getElementById('candidateName');
+    const fimScreen = document.getElementById('fimScreen');
+    const votingConfirmation = document.getElementById('votingConfirmation');
+    const numberInput = document.getElementById('numberInput');
     const key = event.key;
 
     // Identify if the user typed a number
-    if (key >= '0' && key <= '9') {
+    digit1.addEventListener('input', handleInput);
+    digit2.addEventListener('input', handleInput);
+
+    function handleInput() {
         numberInput.play();
 
-        if (digit1.textContent === '') {
-            digit1.textContent = key;
-        } else if (digit2.textContent === '') {
-            digit2.textContent = key;
-
-            const candidateNumber = digit1.textContent + digit2.textContent;
+        if(digit1.value !== '' && digit2.value !== '') {
+            const candidateNumber = digit1.value + digit2.value;
             const candidate = candidates[candidateNumber];
 
-            // Check if the number belongs to a candidate
             if (candidate) {
                 candidateImage.src = candidate.image;
                 candidateImage.style.display = 'block';
-                candidateName.textContent = candidate.name;
+                candidateName.textContent= candidate.name;
                 candidateName.style.display = 'block';
             } else {
                 candidateImage.style.display = 'none';
@@ -31,33 +32,50 @@ document.addEventListener('keydown', function(event) {
     }
        
     // Allow user to delete a number
-    else if (key === 'Backspace') {
-        if (digit2.textContent !== ''){
-            digit2.textContent = '';
-        } else if (digit1.textContent !== '') {
-            digit1.textContent = '';
+    digit1.addEventListener('keydown', handleBackspace);
+    digit2.addEventListener('keydown', handleBackspace);
+
+    function handleBackspace(event){
+        if (event.key === 'Backspace') {
+            if (digit2.value !== ''){
+             digit2.value = '';
+            } else if (digit1.value !== '') {
+                digit1.value = '';
+            }
+
+            candidateImage.style.display = 'none';
+            candidateName.style.display = 'none';
         }
+    }   
+});
 
-        candidateImage.style.display = 'none';
-        candidateName.style.display = 'none';
-    }
-
-    else if (key === 'Enter' && digit1.textContent !== '' && digit2.textContent !== '') {
-        const candidateNumber = digit1.textContent + digit2.textContent;
+function handleConfirm() {
+    if (digit1.value !== '' && digit2.value !== '') {
+        const candidateNumber = digit1.value + digit2.value;
         if (candidates[candidateNumber]) {
 
-            // Get the current vote count from localStorage
             let votes = JSON.parse(localStorage.getItem('votes')) || {};
 
-            // Increment the vote count for the selected candidate
             votes[candidateNumber] = (votes[candidateNumber] || 0) + 1;
 
-            // Save the updated votes back to localStorage
             localStorage.setItem('votes', JSON.stringify(votes));
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.candidate-image-container').style.display = 'none';
+            document.querySelector('.candidate-name-container').style.display = 'none';
 
-            // Redirects the user to the end page
-            window.location.href = 'end.html';
+            fimScreen.style.display = 'flex';
+            votingConfirmation.play();
+
+            setTimeout(function() {
+                window.location.href = 'index.html';
+            }, 2000);
         }
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        handleConfirm();
     }
 });
 
@@ -71,8 +89,11 @@ const candidates = {
     "01": {name: "Tião Leão", image: "./images/Tião Leão.jpg"}
 };
 
+const voltarButton = document.getElementById('voltarButton');
+const confirmarButton = document.getElementById('confirmarButton');
+
 let slashPressed = false;
-let backspacePressedPressed = false;
+let backspacePressed = false;
 
 document.addEventListener('keydown', function(event) {
     if (event.key === '/') {
@@ -85,4 +106,14 @@ document.addEventListener('keydown', function(event) {
     if (slashPressed && backspacePressed) {
         window.location.href = 'index.html';
     }
+});
+
+voltarButton.addEventListener('click', function() {
+    slashPressed = true;
+    backspacePressed = true;
+    window.location.href = 'index.html';
+});
+
+confirmarButton.addEventListener('click', function() {
+    handleConfirm();
 });

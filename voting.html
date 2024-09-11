@@ -71,6 +71,48 @@
                 display: none;
             }
 
+            /* end screen */
+            .fim-screen {
+                display: none;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #f4f4f4;
+            }
+            .fim-text {
+                font-weight: bold;
+                font-size: 20vw;
+                color: #333;
+            }
+
+            .button {
+                position: absolute;
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 8px;
+                font-size: 1.2em;
+                cursor: pointer;
+            }
+            .button-hover {
+                background-color: #45a049;
+            }
+            .button-voltar {
+                top: 2vh;
+                left: 2vw;
+            }
+            .button-confirmar {
+                bottom: 2vh;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
             /* Responsive adjustments */
             @media (max-width: 600px) {
                 .presidente-label {
@@ -88,6 +130,12 @@
                 .candidate-name {
                     font-size: 5vw;
                 }
+                .fim-text {
+                    font-size: 8vw;
+                }
+                .button {
+                    font-size: 3vw;
+                }
             }
         </style>
     </head>
@@ -97,8 +145,8 @@
         <div class="container">
             <div class="presidente-label">PRESIDENTE</div>
             <div class="input-container">
-                <div class="input-box" id="digit1"></div>
-                <div class="input-box" id="digit2"></div>
+                <input type="text" class="input-box" id="digit1" maxlength="1" inputmode="numeric">
+                <input type="text" class="input-box" id="digit2" maxlength="1" inputmode="numeric">
             </div>
         </div>
 
@@ -110,8 +158,15 @@
             <div class="candidate-name" id="candidateName"></div>
         </div>
 
-        <audio id="numberInput" src="./sound effects/number-input.mp3"></audio>
-        <audio id="votingConfirmation" src="./sound effects/voting-confirmation.mp3"></audio>
+        <div class="fim-screen" id="fimScreen">
+            <div class="fim-text">FIM</div>
+        </div>
+
+        <button class="button button-voltar" id="voltarButton">Voltar</button>
+        <button class="button button-confirmar" id="confirmarButton">Confirmar</button>
+
+        <audio id="numberInput" src="./sounds/number-input.mp3"></audio>
+        <audio id="votingConfirmation" src="./sounds/voting-confirmation.mp3"></audio>
 
         <script src="voting.js"></script>
     </body>
