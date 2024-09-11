@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
         <title>Tela Inicial</title>
         <style>
@@ -26,10 +26,35 @@
                 font-size: 3vw;
                 color: #333;
             }
+            .button-container {
+                position: absolute;
+                bottom: 20px;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 20px;
+            }
+            .button {
+                padding: 15px 30px;
+                font-size: 1.2em;
+                border: none;
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 8px;
+                cursor: pointer;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .button-hover {
+                background-color: #45a049;
+            }
 
             @media (max-width: 600px) {
                 .caption {
                     font-size: 4vw;
+                }
+                .button {
+                    font-size: 1em;
+                    padding: 10px 20px;
                 }
             }
 
@@ -42,6 +67,10 @@
             <p class="caption">Justiça Eleitoral Animal</p>
         </div>   
 
+        <div class="button-container">
+            <button class="button" id="results-button">Resultados</button>
+            <button class="button" id="vote-button">Votar</button>
+        </div>
         <script>
             // Check if the user pressed 'Enter' and send them to the voting page
             document.addEventListener('keydown', function(event) {
@@ -50,6 +79,10 @@
                     //redirecting to next page
                     window.location.href = 'voting.html';
                 }
+            });
+
+            document.getElementById('vote-button').addEventListener('click', function() {
+                window.location.href = 'voting.html';
             });
 
             // Checked if the user pressed 'Alt' and send them to the results page
@@ -68,6 +101,10 @@
                     window.location.href = 'results.html';
                 }
             });
+
+            document.getElementById('results-button').addEventListener('click', function() {
+                window.location.href = 'results.html';
+            })
         </script>
     </body>
 </html>

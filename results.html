@@ -60,6 +60,30 @@
             font-size: 14px;
             font-weight: bold;
         }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .button-hover{
+            background-color: #45a049;
+        }
+        .top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .bottom-right {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -80,6 +104,10 @@
             </div>
         </div>
     </div>
+
+    <button class="button top-left" id="back-button">Voltar</button>
+    <button class="button bottom-right" id="reset-button">Apagar votos</button>
+
     <script>
         let slashPressed = false;
         let backspacePressed = false;
@@ -131,6 +159,21 @@
                 dashPressed = false;
             }
         });
+
+        document.getElementById('back-button').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('reset-button').addEventListener('click', function() {
+            const candidateIds = ["34", "71", "99", "22", "11", "12", "01"];
+            const resetVotes = candidateIds.reduce((acc, id) => {
+                acc[id] = 0;
+                return acc;
+            }, {});
+            localStorage.setItem('votes', JSON.stringify(resetVotes));
+            window.location.reload();
+        });
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <script src="results.js"></script>
