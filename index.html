@@ -34,6 +34,10 @@
                 justify-content: space-between;
                 padding: 0 20px;
             }
+            .left-buttons {
+                display: flex;
+                flex-direction: column;
+            }
             .button {
                 padding: 15px 30px;
                 font-size: 1.2em;
@@ -43,6 +47,7 @@
                 border-radius: 8px;
                 cursor: pointer;
                 font-family: Arial, Helvetica, sans-serif;
+                margin-bottom: 10px;
             }
             .button-hover {
                 background-color: #45a049;
@@ -68,9 +73,11 @@
         </div>   
 
         <div class="button-container">
-            <button class="button" id="results-button">RESULTADOS</button>
+            <div class="left-buttons">
+                <button class="button" id="results-button">RESULTADOS</button>
+                <button class="button" id="candidates-button">CANDIDATOS</button>
+            </div>
             <button class="button" id="vote-button">VOTAR</button>
-            <button class="button" id="candidates-button">CANDIDATOS</button>
         </div>
         <script>
             // Check if the user pressed 'Enter' and send them to the voting page
