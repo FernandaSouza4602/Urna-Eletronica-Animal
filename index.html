@@ -68,8 +68,9 @@
         </div>   
 
         <div class="button-container">
-            <button class="button" id="results-button">Resultados</button>
-            <button class="button" id="vote-button">Votar</button>
+            <button class="button" id="results-button">RESULTADOS</button>
+            <button class="button" id="vote-button">VOTAR</button>
+            <button class="button" id="candidates-button">CANDIDATOS</button>
         </div>
         <script>
             // Check if the user pressed 'Enter' and send them to the voting page
@@ -105,6 +106,10 @@
             document.getElementById('results-button').addEventListener('click', function() {
                 window.location.href = 'results.html';
             })
+
+            document.getElementById('candidates-button').addEventListener('click', function() {
+                window.location.href = 'candidates.html';
+            });
         </script>
     </body>
 </html>
