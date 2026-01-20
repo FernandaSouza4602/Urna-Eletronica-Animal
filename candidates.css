@@ -48,7 +48,7 @@ body{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #fff5;
+    background-color: rgba(105, 104, 104, 0.397);
     color: #fff;
     border: none;
     font-family: monospace;
@@ -57,7 +57,7 @@ body{
 .dots{
     position: absolute;
     bottom: 10px;
-    color: #fff;
+    color: #616161;
     left: 0;
     width: 100%;
     margin: 0;
