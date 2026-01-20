@@ -34,7 +34,7 @@
                 gap: 2vw;
             }
             .input-box {
-                width: 6vw;
+                width: 10vw;
                 height: 13vh;
                 border: 2px solid #333;
                 text-align: center;
@@ -47,7 +47,7 @@
             .candidate-image-container {
                 position: absolute;
                 top: 19vh;
-                left: 65vw;
+                left: 55vw;
             }
             .candidate-image {
                 width: 350px;
@@ -92,7 +92,7 @@
 
             .button {
                 position: absolute;
-                background-color: #4CAF50;
+                background-color: #1b9b1f;
                 color: white;
                 padding: 10px 20px;
                 border: none;
@@ -100,12 +100,16 @@
                 font-size: 1.2em;
                 cursor: pointer;
             }
-            .button-hover {
-                background-color: #45a049;
+            .button:hover {
+                background-color: #5fc464;
+            }
+            .button-voltar:hover {
+                background-color: #3993c7;
             }
             .button-voltar {
                 top: 2vh;
                 left: 2vw;
+                background-color: #085b8b;
             }
             .button-confirmar {
                 bottom: 2vh;
@@ -118,10 +122,17 @@
                 .presidente-label {
                     font-size: 4vw;
                 }
+                .container {
+                    left: 5vw; /* Move inputs closer to edge to save space */
+                }
                 .input-box {
                     width: 40px;
                     height: 60px;
                     font-size: 4vw;
+                }
+                .candidate-image-container {
+                    left: 45vw; /* Move image slightly left */
+                    top: 22vh;
                 }
                 .candidate-image {
                     width: 150px;

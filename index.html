@@ -31,26 +31,25 @@
                 top: 10px;
                 width: 100%;
                 display: flex;
-                justify-content: space-between;
+                justify-content: space-evenly;
                 padding: 0 20px;
-            }
-            .left-buttons {
-                display: flex;
-                flex-direction: column;
+                flex-wrap: wrap;
+                gap: 10px;
             }
             .button {
                 padding: 15px 30px;
                 font-size: 1.2em;
                 border: none;
-                background-color: #4CAF50;
+                background-color: #085b8b;
                 color: white;
                 border-radius: 8px;
                 cursor: pointer;
                 font-family: Arial, Helvetica, sans-serif;
                 margin-bottom: 10px;
+                width: 200px;
             }
-            .button-hover {
-                background-color: #45a049;
+            .button:hover {
+                background-color: #3993c7;
             }
 
             @media (max-width: 600px) {
@@ -60,6 +59,7 @@
                 .button {
                     font-size: 1em;
                     padding: 10px 20px;
+                    width: auto;
                 }
             }
 
@@ -73,10 +73,9 @@
         </div>   
 
         <div class="button-container">
-            <div class="left-buttons">
-                <button class="button" id="results-button">RESULTADOS</button>
-                <button class="button" id="candidates-button">CANDIDATOS</button>
-            </div>
+            <button class="button" id="about-button">SOBRE</button>
+            <button class="button" id="candidates-button">CANDIDATOS</button>
+            <button class="button" id="results-button">RESULTADOS</button>
             <button class="button" id="vote-button">VOTAR</button>
         </div>
         <script>
@@ -116,6 +115,10 @@
 
             document.getElementById('candidates-button').addEventListener('click', function() {
                 window.location.href = 'candidates.html';
+            });
+
+            document.getElementById('about-button').addEventListener('click', function() {
+                window.location.href = 'info.html';
             });
         </script>
     </body>

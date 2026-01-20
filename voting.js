@@ -12,8 +12,12 @@ document.addEventListener('keydown', function(event) {
     digit1.addEventListener('input', handleInput);
     digit2.addEventListener('input', handleInput);
 
-    function handleInput() {
+    function handleInput(e) {
         numberInput.play();
+
+        if (e && e.target === digit1 && digit1.value.length === 1) {
+            digit2.focus();
+        }
 
         if(digit1.value !== '' && digit2.value !== '') {
             const candidateNumber = digit1.value + digit2.value;
@@ -37,11 +41,9 @@ document.addEventListener('keydown', function(event) {
 
     function handleBackspace(event){
         if (event.key === 'Backspace') {
-            if (digit2.value !== ''){
-             digit2.value = '';
-            } else if (digit1.value !== '') {
-                digit1.value = '';
-            }
+            digit1.value = '';
+            digit2.value = '';
+            digit1.focus();
 
             candidateImage.style.display = 'none';
             candidateName.style.display = 'none';

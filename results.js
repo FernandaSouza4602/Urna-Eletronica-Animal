@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Vote Counts:', voteCounts);
     console.log('Candidate Names:', candidateNames);
 
+    const isMobile = window.innerWidth < 600;
 
     // Create the chart
     const voteChart = new Chart(ctx, {
@@ -57,10 +58,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }]
         },
         options: {
+            maintainAspectRatio: false,
             indexAxis: 'y',
             layout: {
                 padding: {
-                    right: 100
+                    right: isMobile ? 30 : 100
                 }
             },
             plugins: {
@@ -76,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     align: 'end',
                     anchor: 'end',
                     font: {
-                        size: 50,
+                        size: isMobile ? 20 : 50,
                         weight: 'bold'
                     },
                     formatter: function(value) {
@@ -91,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     beginAtZero: true,
                     ticks: {
                         font: {
-                            size: 18
+                            size: isMobile ? 10 : 18
                         },
                         color: '#333',
                         display: false
@@ -103,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 y: {
                     ticks: {
                         font: {
-                            size: 18
+                            size: isMobile ? 10 : 18
                         },
                         color: '#333'
                     }
