@@ -1,55 +1,49 @@
-document.addEventListener('keydown', function(event) {
-    const digit1 = document.getElementById('digit1');
-    const digit2 = document.getElementById('digit2');
-    const candidateImage = document.getElementById('candidateImage');
-    const candidateName = document.getElementById('candidateName');
-    const fimScreen = document.getElementById('fimScreen');
-    const votingConfirmation = document.getElementById('votingConfirmation');
-    const numberInput = document.getElementById('numberInput');
-    const key = event.key;
+const digit1 = document.getElementById('digit1');
+const digit2 = document.getElementById('digit2');
+const candidateImage = document.getElementById('candidateImage');
+const candidateName = document.getElementById('candidateName');
+const fimScreen = document.getElementById('fimScreen');
+const votingConfirmation = document.getElementById('votingConfirmation');
+const numberInput = document.getElementById('numberInput');
 
-    // Identify if the user typed a number
-    digit1.addEventListener('input', handleInput);
-    digit2.addEventListener('input', handleInput);
+// Identify if the user typed a number
+digit1.addEventListener('input', handleInput);
+digit2.addEventListener('input', handleInput);
 
-    function handleInput(e) {
-        numberInput.play();
+function handleInput(e) {
+    numberInput.play();
 
-        if (e && e.target === digit1 && digit1.value.length === 1) {
-            digit2.focus();
-        }
-
-        if(digit1.value !== '' && digit2.value !== '') {
-            const candidateNumber = digit1.value + digit2.value;
-            const candidate = candidates[candidateNumber];
-
-            if (candidate) {
-                candidateImage.src = candidate.image;
-                candidateImage.style.display = 'block';
-                candidateName.textContent= candidate.name;
-                candidateName.style.display = 'block';
-            } else {
-                candidateImage.style.display = 'none';
-                candidateName.style.display = 'none';
-            }
-        }
+    if (e && e.target === digit1 && digit1.value.length === 1) {
+        digit2.focus();
     }
-       
-    // Allow user to delete a number
-    digit1.addEventListener('keydown', handleBackspace);
-    digit2.addEventListener('keydown', handleBackspace);
 
-    function handleBackspace(event){
-        if (event.key === 'Backspace') {
-            digit1.value = '';
-            digit2.value = '';
-            digit1.focus();
+    if(digit1.value !== '' && digit2.value !== '') {
+        const candidateNumber = digit1.value + digit2.value;
+        const candidate = candidates[candidateNumber];
 
+        if (candidate) {
+            candidateImage.src = candidate.image;
+            candidateImage.style.display = 'block';
+            candidateName.textContent= candidate.name;
+            candidateName.style.display = 'block';
+        } else {
             candidateImage.style.display = 'none';
             candidateName.style.display = 'none';
         }
-    }   
-});
+    }
+}
+   
+// Allow user to delete a number
+digit1.addEventListener('keydown', handleBackspace);
+digit2.addEventListener('keydown', handleBackspace);
+
+function handleBackspace(event){
+    if (event.key === 'Backspace') {
+        if (event.target === digit2 && digit2.value === '') {
+            digit1.focus();
+        }
+    }
+}
 
 function handleConfirm() {
     if (digit1.value !== '' && digit2.value !== '') {
@@ -94,25 +88,7 @@ const candidates = {
 const voltarButton = document.getElementById('voltarButton');
 const confirmarButton = document.getElementById('confirmarButton');
 
-let slashPressed = false;
-let backspacePressed = false;
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === '/') {
-        slashPressed = true;
-    }
-    if (event.key === 'Backspace') {
-        backspacePressed = true;
-    }
-
-    if (slashPressed && backspacePressed) {
-        window.location.href = 'index.html';
-    }
-});
-
 voltarButton.addEventListener('click', function() {
-    slashPressed = true;
-    backspacePressed = true;
     window.location.href = 'index.html';
 });
 

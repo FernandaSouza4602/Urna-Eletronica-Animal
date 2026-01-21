@@ -9,49 +9,49 @@
 </head>
 <body>
 
-<div class="slider">
-    <div class="list">
-        <div class="item">
-            <img src="images/Leão campanha.PNG">
-        </div>
-        <div class="item">
-            <img src="images/Lobo-guará campanha.PNG">
-        </div>
-        <div class="item">
-            <img src="images/Macaco campanha.PNG">
-        </div>
-        <div class="item">
-            <img src="images/Preguiça campanha.PNG">
-        </div>
-        <div class="item">
-            <img src="images/Siriema campanha.PNG">
-        </div>
-        <div class="item">
-            <img src="images/Tamanduá campanha.PNG">
-        </div>
-        <div class="item">
-            <img src="images/Vaca campanha.PNG">
-        </div>
-    </div>
+<!-- Return Button -->
+<button class="return-btn">VOLTAR</button>
 
-    <!-- Return Button -->
-    <a href="index.html" class="return-btn">X</a>
-
-    <!--button prev and next-->
-    <div class="buttons">
-        <button id="prev"><</button>
-        <button id="next">></button>
+<div class="carousel-container">
+    <button id="prev" class="nav-btn"><</button>
+    <div class="slider-wrapper">
+        <div class="slider">
+            <div class="list">
+                <div class="item">
+                    <img src="images/Leão campanha.PNG">
+                </div>
+                <div class="item">
+                    <img src="images/Lobo-guará campanha.PNG">
+                </div>
+                <div class="item">
+                    <img src="images/Macaco campanha.PNG">
+                </div>
+                <div class="item">
+                    <img src="images/Preguiça campanha.PNG">
+                </div>
+                <div class="item">
+                    <img src="images/Siriema campanha.PNG">
+                </div>
+                <div class="item">
+                    <img src="images/Tamanduá campanha.PNG">
+                </div>
+                <div class="item">
+                    <img src="images/Vaca campanha.PNG">
+                </div>
+            </div>
+        </div>
+        <!--dots-->
+        <ul class="dots">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
-    <!--dots-->
-    <ul class="dots">
-        <li class="active"></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
+    <button id="next" class="nav-btn">></button>
 </div>
 
     <script src="candidates.js"></script>

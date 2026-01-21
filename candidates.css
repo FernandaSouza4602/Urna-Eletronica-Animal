@@ -3,17 +3,17 @@
 }
 body{
     margin: 0;
-    font-family: monospace;
+    font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+}   
 .slider{
-    width: 553px;
+    width: 450px;
     max-width: 100vw;
     aspect-ratio: 2/3;
-    margin: auto;
     position: relative;
     overflow: hidden;
 }
@@ -27,7 +27,7 @@ body{
     transition: 1s;
 }
 .list .item{
-    width: 553px;
+    width: 450px;
     max-width: 100vw;
     height: 100%;
 }
@@ -36,31 +36,38 @@ body{
     height: 100%;
     object-fit: contain;
 }
-.buttons{
-    position: absolute;
-    top: 45%;
-    left: 5%;
-    width: 90%;
+
+.carousel-container {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
 }
-.buttons button{
+
+.slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-btn {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: rgba(105, 104, 104, 0.397);
-    color: #fff;
+    background-color: #085b8b;
+    color: white;
     border: none;
-    font-family: monospace;
-    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.nav-btn:hover {
+    background-color: #3993c7;
 }
 .dots{
-    position: absolute;
-    bottom: 10px;
-    color: #616161;
-    left: 0;
+    position: relative;
+    margin-top: 10px;
     width: 100%;
-    margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
@@ -69,27 +76,36 @@ body{
     list-style: none;
     width: 10px;
     height: 10px;
-    background-color: #fff;
-    margin: 20px;
+    background-color: #085b8b;
+    margin: 10px;
     border-radius: 20px;
     transition: 1s;
+    cursor: pointer;
 }
 .dots li.active{
     width: 30px;
+    background-color: #3993c7;
 }
 .return-btn{
     position: absolute;
-    top: 23px;
-    left: 10px;
-    background-color: rgba(255, 42, 42, 0.753);
+    top: 20px;
+    left: 20px;
+    background-color: #085b8b;
     color: #fff;
+    font-size: 1.2em;
     padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
     border-radius: 5px;
     z-index: 100;
+    border: none;
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.return-btn:hover {
+    background-color: #3993c7;
 }
 @media screen and (max-width: 768px){
+
     .slider{
        height: 400px;
     }
